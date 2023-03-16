@@ -1,22 +1,15 @@
 const express = require('express');
-const path = require ('path') //what is this?
-// const api = require ('./routes/index.js');
-
-// const usingApp = require('./routes/htmlRoutes');
-
+const path = require ('path')
 const PORT = 3001;
-
 const app = express();
 
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
-// app.use('/api', api);
-
-// usingApp(app);
+//this is a new way to require files. Instead of const app = require. I can just simply require the files and pass app as parameter.
 require('./routes/apiRoutes')(app);
 require('./routes/htmlRoutes')(app);
 
